@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goodee.cacsh.mapper.CashMapper">
+	<select id = "selectCashbookListByMonth"
+			parameterType="jave.util.Map"
+			resultType = "com.goodee.cash.vo.cashbook">
+	
+		SELECT
+			cashbook_no cashbookNo,
+			category,
+			price,
+			cashbook_date cashbookDate
+		FROM cashbook
+		WHERE member_id = #{memberId}
+		AND YEAR(cashbook_date)	=#{targetYear}
+		AND MONTH(cashboo_date)	 = #{targetMonth}
+		ORDER BY cashbook_date ASC
+	</select>
+
+</mapper>
